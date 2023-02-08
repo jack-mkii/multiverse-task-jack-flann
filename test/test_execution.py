@@ -30,7 +30,8 @@ def test_invalid_input(executor):
 
 
 def test_movement_from_default_file(executor):
-    executor.execute("./input.txt")
+    executor.execute("input.txt")
+    assert len(executor.world.robots) == 2
     assert has_state(executor.world.robots[0], "(4, 4, E)")
     assert has_state(executor.world.robots[1], "(0, 4, W) LOST")
 

@@ -1,11 +1,17 @@
 import pytest
 
+from mars_rover.move_executor import MoveExecutor
 from mars_rover.robot import Robot, Position
 
 
 @pytest.fixture(scope="function")
 def robot():
     return Robot(Position(0, 0), "N", limits=Position(3, 3))
+
+
+@pytest.fixture(scope="function")
+def executor():
+    return MoveExecutor()
 
 
 @pytest.fixture()

@@ -10,22 +10,24 @@ class MoveExecutor:
 
     Attributes
     ----------
-    input : str
-        text input containing world state and commands for robots
     world : World
         The world in which robots are moving
     """
     def __init__(self):
-        self.input = ""
         self.world = None
 
     @staticmethod
     def read_input(filename):
         """
-        Read input file, stripping lines of leading/trailing whitespace
+        Read input file, separating into world state and robot instructions
         """
         with open(filename, "r") as infile:
-            return [x.strip() for x in infile.readlines()]
+            content = [x.strip() for x in infile.readlines()]
+
+        world_state = content[0]
+        instructions = content[1:]
+
+        return world_state, instructions
 
     @staticmethod
     def validate(text):
@@ -50,14 +52,14 @@ class MoveExecutor:
         Execute input from file
         """
         # read text input
-        self.input = self.read_input(filename)
+        world_state, instructions = self.read_input(filename)
 
         # create world
-        grid = [int(c) for c in self.input[0].split()]
+        grid = [int(c) for c in world_state.split()]
         self.world = World(grid[0], grid[1])
 
         # process commands
-        for input_str in self.input[1:]:
+        for input_str in instructions:
             # ensure command is structured correctly
             self.validate(input_str)
 

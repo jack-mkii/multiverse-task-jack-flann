@@ -33,4 +33,6 @@ In order to run the tests:
   - e.g. grid instantiated as (2, 2) but the starting position is (3, 3, E)
 - Add validation of world state initialisation
 - Parameterise the movement tests
+- Add robust handling of input
+  - e.g. multiple world instantiations in one file
 - Add some handling for overlap of robots

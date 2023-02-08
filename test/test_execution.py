@@ -2,7 +2,7 @@ from pathlib import Path
 
 import pytest
 
-from mars_rover.move_executor import MoveExecutor, InvalidCommandError
+from mars_rover.move_executor import InvalidCommandError
 
 PROJECT_DIR = Path(__file__).parents[0]
 

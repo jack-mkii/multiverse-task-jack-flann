@@ -23,6 +23,7 @@ def test_state_parse(executor):
     assert state.y == 0
     assert state.orientation == "N"
 
+
 def test_invalid_input(executor):
     with pytest.raises(InvalidCommandError):
         executor.execute(f"{PROJECT_DIR}/inputs/invalid.txt")

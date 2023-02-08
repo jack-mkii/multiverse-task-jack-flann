@@ -16,6 +16,13 @@ def test_input_read(executor):
     assert state == "0 0"
     assert instructions == ["(0, 0, N) RRR"]
 
+
+def test_state_parse(executor):
+    state = executor.parse_state("(0, 0, N)")
+    assert state.x == 0
+    assert state.y == 0
+    assert state.orientation == "N"
+
 def test_invalid_input(executor):
     with pytest.raises(InvalidCommandError):
         executor.execute(f"{PROJECT_DIR}/inputs/invalid.txt")
